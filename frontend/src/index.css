@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme{
+  --color-back-hole:"#fff3dcff";
+  --color-licorice:#281811ff;
+  --color-cafe:#4f3120ff;
+  --color-butterscotch:#d89245;
+  --color-butterscotch-light:#dd9d4cff;
+  --color-alabaster:#f2efe3ff;;
+  --color-eerie-black:"#242424ff";
+  --color-jet:"#333333ff";
+  --color-amber_alpha:"#fef3c717";
+}
+
+.perspective{
+  perspective:1000px;
+}
+
+.transform-style{
+  transform-style: preserve-3d;
+}
+
+.rotate-y-180{
+  transform: rotateY(180deg);
+}
+
+.backface-hidden{
+  backface-visibility: hidden;
+}
+
+.rotate-y-180{
+  transform: rotateY(180deg);
+}
+
+@keyframes fade-in{
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+    filter: blur(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-fade-in{
+  animation: fade-in 0.8s ease-out both;
+}
+
+@keyframes continue {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-continue {
+  animation: continue 15s linear infinite;
+}
