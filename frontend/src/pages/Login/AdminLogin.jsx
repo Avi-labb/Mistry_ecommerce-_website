@@ -33,6 +33,8 @@ const AdminLogin = () => {
       })
       navigate('/')
     } catch (error) {
+      console.log(error);
+      
       setmsg(error.response?.data?.message || "Login Failed☠️☠️")
     }
   }
