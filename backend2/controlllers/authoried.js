@@ -43,17 +43,22 @@ export const LoginUser = async (req, res) => {
 
         const { identifier, password } = req.body
 
-        if (!(identifier)) {
-            return res.status(404).json({
-                message: "Enter atleast valid phonenumber or email"
-            })
+        if (!identifier || !password) {
+            return res.status(400).json({
+                message: "Please enter email/phone and password"
+            });
         }
 
-        const user = await userModel.findOne({
-            $or: [
-                { email: identifier },
-                { phoneNumber: identifier }]
-        })
+        let user;
+
+        if (identifier.includes("@")) {
+            user = await userModel.findOne({ email: identifier });
+        } else {
+            user = await userModel.findOne({
+                phoneNumber: Number(identifier)
+            });
+        }
+
         if (!user) {
             res.status(400).json({
                 message: "User Not Found"
@@ -69,7 +74,7 @@ export const LoginUser = async (req, res) => {
 
 
         const accessToken = user.generateAccessToken()
-        const refreshToken = user.generateRefreshToken()        
+        const refreshToken = user.generateRefreshToken()
 
         user.refreshToken = refreshToken
         await user.save({ validateBeforeSave: false })
@@ -91,7 +96,7 @@ export const LoginUser = async (req, res) => {
             })
     } catch (error) {
         console.log(error);
-        
+
         res.status(404)
             .json({
                 message: "Login Failed",
@@ -100,74 +105,74 @@ export const LoginUser = async (req, res) => {
     }
 }
 
-export const Getuser=async(req,res)=>{
+export const Getuser = async (req, res) => {
     try {
-        const user=await userModel.findById(req.user._id)
+        const user = await userModel.findById(req.user._id)
         res.status(200).json({
-            message:"User details",
+            message: "User details",
             user,
-            role:req.role
+            role: req.role
         })
     } catch (error) {
         res.status(404).json({
-            message:"Server Errror",error
+            message: "Server Errror", error
         })
     }
 }
 
-export const RefreshToken=async(req,res)=>{
-try {
-        const incomingtoken=req.cookies.refreshToken
-        if(!incomingtoken){
-           return res.status(404).json({
-                message:"Unathorized Request"
+export const RefreshToken = async (req, res) => {
+    try {
+        const incomingtoken = req.cookies.refreshToken
+        if (!incomingtoken) {
+            return res.status(404).json({
+                message: "Unathorized Request"
             })
         }
-    
-        const deocded =jwt.verify(incomingtoken,process.env.REFRESH_TOKEN_SECRET)
-        const user=await userModel.findById(deocded._id)
-        if(!user){
+
+        const deocded = jwt.verify(incomingtoken, process.env.REFRESH_TOKEN_SECRET)
+        const user = await userModel.findById(deocded._id)
+        if (!user) {
             return res.status(401).json({
-                message:"Invalid refresh token"
+                message: "Invalid refresh token"
             })
         }
-        if(incomingtoken !==  user.refreshToken){
-           return res.status(401).json({
-                message:"Reffresh token is expired"
+        if (incomingtoken !== user.refreshToken) {
+            return res.status(401).json({
+                message: "Reffresh token is expired"
             })
         }
-            const accessToken = user.generateAccessToken()
-            const option={
-                httpOnly:true,
-                secure:false
-            }
-            res.status(200)
-            .cookie("accessToken",accessToken,option)
+        const accessToken = user.generateAccessToken()
+        const option = {
+            httpOnly: true,
+            secure: false
+        }
+        res.status(200)
+            .cookie("accessToken", accessToken, option)
             .json({
-                message:"New Access genearted"
+                message: "New Access genearted"
             })
-} catch (error) {
-    res.status(401).json({
-        message:"not generated",error
-    })
-}
+    } catch (error) {
+        res.status(401).json({
+            message: "not generated", error
+        })
+    }
 }
 
 export const LogoutUser = async (req, res) => {
     try {
-        const user=await userModel.findByIdAndUpdate(req.user._id,
+        const user = await userModel.findByIdAndUpdate(req.user._id,
             {
-                $set:{
-                    refreshToken:""
+                $set: {
+                    refreshToken: ""
                 }
-            },{returnDocument:"after"}
+            }, { returnDocument: "after" }
         )
-        
-       const option = {
+
+        const option = {
             httpOnly: true,
             secure: false
         }
-        
+
         res.status(200)
             .clearCookie('accessToken', option)
             .clearCookie('refreshToken', option)
@@ -176,7 +181,7 @@ export const LogoutUser = async (req, res) => {
             })
     } catch (error) {
         console.log(error);
-        
+
         res.status(404).json({
             message: "Invalid refresh Token",
             error: error?.message
@@ -266,21 +271,21 @@ export const Forgetpassword = async (req, res) => {
 
 export const ResetPassword = async (req, res) => {
     try {
-        const { token }=req.params
-        const {  password } = req.body
+        const { token } = req.params
+        const { password } = req.body
         if (password.length < 8) {
             return res.status(400).json({
                 message: "Password must be at least 8 characters"
             })
         }
-        
+
         const decoded = jwt.verify(token, "baba")
         if (!decoded) {
             res.status(404).json({
                 message: "Invalid Token"
             })
         }
-        
+
         const user = await userModel.findById(decoded.id)
         console.log("User after decoded: ", user);
         if (!user) {
@@ -288,7 +293,7 @@ export const ResetPassword = async (req, res) => {
                 message: "Invalid Token"
             })
         }
-        
+
         const isSame = await bcrypt.compare(password, user.password)
         if (isSame) {
             return res.status(400).json({
@@ -299,12 +304,12 @@ export const ResetPassword = async (req, res) => {
         const resetpassword = await bcrypt.hash(password, 10)
         user.password = resetpassword
         await user.save()
-        
+
         return res.status(200).json({
             message: "Reset Password Successfully.."
         })
     } catch (error) {
-        
+
         return res.status(401).json({
             message: "Reset password Failed OR token Expire"
         })
