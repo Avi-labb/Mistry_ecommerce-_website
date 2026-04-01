@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://mistry-ship-xo.onrender.com",
+  baseURL: "https://mistry-shop-xox.onrender.com",
   withCredentials: true,
 });
 
