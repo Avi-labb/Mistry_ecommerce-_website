@@ -50,7 +50,7 @@ const Login = () => {
     <div
       className="min-h-screen flex items-center justify-center sm:justify-end bg-cover bg-center"
       style={{ backgroundImage: "url('/Images/loginbg.avif')" }}
-    > {error && <div className='absolute shadow mt-2 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold right-2'>{error}</div>}
+    > {error && <div className='absolute shadow mt-2 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold top-1 right-2'>{error}</div>}
       <div className="mr-0 sm:mr-50 relative sm:w-[420px] w-[370px] px-8 py-12 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl text-white">
 
          
