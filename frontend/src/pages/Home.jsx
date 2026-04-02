@@ -230,7 +230,7 @@ const reviews = [
       
       <section className="w-full flex flex-col  bg-amber-200 h-150">
         
-      <div className="bg-cafe absolute ml-5 sm:ml-10  rounded-xl mt-10 py-5 sm:py-3 px-6 text-white ">
+      <div className="bg-cafe absolute  sm:ml-10  rounded-xl mt-10 py-5 sm:py-3 px-6 text-white ">
       <h2 className="text-3xl font-semibold mb-2 sm:mb-10 text-center">
         Customer Reviews
 
