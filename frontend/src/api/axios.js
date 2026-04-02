@@ -5,30 +5,30 @@ const api = axios.create({
   withCredentials: true,
 });
 
-api.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
+// api.interceptors.response.use(
+//   (response) => response,
+//   async (error) => {
+//     const originalRequest = error.config;
 
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+//     if (error.response?.status === 401 && !originalRequest._retry) {
+//       originalRequest._retry = true;
 
-      try {
-        console.log("Refreshing token...");
+//       try {
+//         console.log("Refreshing token...");
 
-       const resposne= await api.get("/api/refresh-token");
-        console.log(resposne);
+//        const resposne= await api.get("/api/refresh-token");
+//         console.log(resposne);
         
-        return api(originalRequest);
+//         return api(originalRequest);
 
-      } catch (err) {
-        console.log("Session expired");
-        // window.location.href = '/login';
-      }
-      }
+//       } catch (err) {
+//         console.log("Session expired");
+//         // window.location.href = '/login';
+//       }
+//       }
 
-    return Promise.reject(error);
-  }
-);
+//     return Promise.reject(error);
+//   }
+// );
 
 export default api;

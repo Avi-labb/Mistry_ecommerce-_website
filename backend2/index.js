@@ -34,7 +34,6 @@ app.use('/cart',CartRoute)
 app.use('/address',AdressRoute)
 app.use('/order',OrderRoute)
 
-
 app.listen(5000,()=>{
     console.log("Server is running on port");
     
