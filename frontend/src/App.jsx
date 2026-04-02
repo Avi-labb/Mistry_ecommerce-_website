@@ -43,7 +43,7 @@ const router = createBrowserRouter([
   { path: '/change-password/:token',element:<ChangePassword /> },
   { path: '/cart', element:<Cart />},
   { path: '/view/order',element:<ViewOrder />},
-  { path: '/admin/status', element:<AdminDashboard />}
+  { path: '/admin/status', element:<AdminDashboard />},
 
 ]);
 

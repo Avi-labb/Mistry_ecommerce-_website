@@ -13,9 +13,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     const loadData = async () => {
-      try {
-        console.log("sajssja");
-        
+      try {        
         const res = await api.get("/admin/Status");
         console.log(res.data);
         
@@ -28,7 +26,6 @@ export default function AdminDashboard() {
     };
     loadData();
   }, []);
-
 
   const updatestatus=async()=>{
     try {

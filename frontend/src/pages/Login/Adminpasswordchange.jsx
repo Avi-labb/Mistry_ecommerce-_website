@@ -73,20 +73,6 @@ const ChangePassword = () => {
           Expires in {formatTime()}🕑
         </p>
     <form onSubmit={handleform} action="">
-        {/* <div className="flex justify-between mb-6">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              ref={(el) => (inputsRef.current[index] = el)}
-              type="text"
-              maxLength="1"
-              value={digit}
-              onChange={(e) => handleOtpChange(e.target.value, index)}
-              onKeyDown={(e) => handleKeyDown(e, index)}
-              className="w-14 h-14 text-center text-xl rounded-lg bg-black/30 border border-white/30 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          ))}
-        </div> */}
 
         <input
           type="password"

@@ -249,7 +249,7 @@ export const Forgetpassword = async (req, res) => {
         const link=`http://localhost:5173/change-password/${token}`
 
         res.status(200).json({
-            message: "Otp generate Successfully!! Click on the link button",
+            message: "Click on the link button",
             link,
             otp
         });
@@ -257,6 +257,7 @@ export const Forgetpassword = async (req, res) => {
     } catch (error) {
 
         res.status(500).json({
+            link,
             message: "Forgot password failed",
             error: error.message
         });
