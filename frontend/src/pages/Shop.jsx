@@ -165,7 +165,7 @@ const Shop = () => {
             </form>
         </div>
       </div>)}
-      <div className="px-6 py-5 sticky top-0 h-screen">
+      <div className="hidden sm:flex flex-col px-6  py-5 sticky top-0 h-screen">
         {admin === "admin" ?
           (<div className="flex flex-col -mt-7">
             <h1 className="font-bold text-xl">MISTRY</h1>
@@ -175,7 +175,7 @@ const Shop = () => {
           : (<div> <h1 className="font-bold text-2xl">MISTRY</h1>
           </div>)}
 
-        <div className="flex flex-col gap-4 mt-6">
+        <div className="hidden sm:flex flex-col gap-4 mt-6">
 
 
           {admin === "admin" ? (<div></div>) : (
@@ -234,7 +234,7 @@ const Shop = () => {
           />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+        <div className=" grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
           {products.map((product, idx) => (
 
             <div key={idx}>
@@ -256,7 +256,7 @@ const Shop = () => {
 
           <span className="line-through ml-1 text-gray-500">₹{product.price}</span>
  
-          <span className="bg-red-500 ml-1 text-white text-sm px-2 py-1 rounded">
+          <span className="bg-red-500 ml-1 whitespace-nowrap text-white text-sm px-2 py-1 rounded">
             {product.discountPercent ? product.discountPercent : 0} % OFF
           </span>
                     </div>

@@ -120,7 +120,7 @@ const Cart = () => {
   }
   return (
 
-    <div className="">
+    <div className="min-h-screen">
       <div className="flex bg-zinc-200 justify-between px-10 sm:px-55 py-4 mb">
         <div className="font-semibold text-2xl">ꩇׁׅ݊ꪱׁׅ꯱ׁׅ֒tׁׅꭈׁׅᨮ꫶ׁׅ֮</div>
         <div className="flex justify-center items-center">
@@ -166,7 +166,7 @@ const Cart = () => {
         </div>
       </div>
       <hr className="text-black/30 " />
-      <div className="min-h-screen bg-zinc-100  p-8">
+      <div className="max-h-screen bg-zinc-100  p-8">
 
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           {move === 1 && (<div className="md:col-span-2 border border-black/30 bg-white p-6 rounded-xl shadow">

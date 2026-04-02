@@ -33,7 +33,7 @@ const userSchema=new mongoose.Schema(
     })
 
 
-userSchema.methods.generateAccessToken=function(expiresIn="1h"){
+userSchema.methods.generateAccessToken=function(expiresIn="2h"){
     
     return  jwt.sign(
             

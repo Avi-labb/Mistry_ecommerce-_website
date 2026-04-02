@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://mistry-ship-xo.onrender.com",
+  baseURL: "https://mistry-shop-xox.onrender.com",
   withCredentials: true,
 });
 
@@ -16,15 +16,16 @@ api.interceptors.response.use(
       try {
         console.log("Refreshing token...");
 
-        await api.get("/admin/refresh-token");
-
+       const resposne= await api.get("/api/refresh-token");
+        console.log(resposne);
+        
         return api(originalRequest);
 
       } catch (err) {
         console.log("Session expired");
-  // window.location.href = '/login';
+        // window.location.href = '/login';
       }
-    }
+      }
 
     return Promise.reject(error);
   }

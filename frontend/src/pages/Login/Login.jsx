@@ -23,20 +23,20 @@ const Login = () => {
     return true
   }
 
-  const handlesubmit = async (e) => {
-    e.preventDefault()
-    if (!validation) return
-    try {
-      const response = await api.post("/api/login", {
-        identifier,
-        password
-      }
-    )
-      
-      const fullname=response.data.user.fullname
+    const handlesubmit = async (e) => {
+      e.preventDefault()
+      if (!validation) return
+      try {
+        const response = await api.post("/api/login", {
+          identifier,
+          password
+        }
+      )
+        
+        const fullname=response.data.user.fullname
 
-      localStorage.setItem("fullname",fullname)
-      seterror(response.data.message)
+        localStorage.setItem("fullname",fullname)
+        seterror(response.data.message)
 
       setidentifier("")
       setpassword("")
@@ -53,12 +53,12 @@ const Login = () => {
     >
       <div className="mr-0 sm:mr-50 relative sm:w-[420px] w-[370px] px-8 py-12 rounded-2xl backdrop-blur-lg bg-white/10 border border-white/20 shadow-2xl text-white">
 
+          {error && <div className='absolute shadow mt-2 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold right-2'>{error}</div>}
         <form onSubmit={handlesubmit} className="space-y-4">
 
           <h1 className="text-2xl font-semibold text-center -mt-4 mb-6">
             Login
           </h1>
-          {error && <div className='absolute shadow mt-2 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold right-2'>{error}</div>}
           
           <div className='flex flex-col gap-1'>
             <label className="ml-1 text-md text-gray-200">

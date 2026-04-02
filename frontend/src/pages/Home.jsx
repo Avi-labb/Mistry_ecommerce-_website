@@ -1,7 +1,8 @@
 import React, { isValidElement, useEffect, useState } from "react";
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import {ArrowLeftToLine, ArrowRightToLine } from 'lucide-react'
 const Home = () => {
+  const navigate=useNavigate()
 const reviews = [
   
   {
@@ -40,19 +41,23 @@ const reviews = [
               🆆🅴🅻🅲🅾🅼🅴 🆃🅾 <span className="text-4xl">🅼🅸🆂🆃🆁🆈</span>
             </p>
 
-            <h1 className="text-4xl text-amber-800/80 md:text-6xl font-bold whitespace-nowrap leading-tight">
+            <h1 className="text-4xl text-amber-500/80 sm:text-amber-800/80 md:text-6xl font-bold whitespace-nowrap leading-tight">
               Handmade Fashion <br /> & Vintage Pieces
             </h1>
 
-            <p className="text-lg font-semibold opacity-90 whitespace-nowrap">
+            <p className="text-md sm:text-lg font-semibold opacity-90 whitespace-nowrap">
               Discover premium clothing, accessories, and lifestyle<br /> products
               crafted with timeless design and modern trends.
             </p>
 
             <div className="flex gap-4">
-              <Link to='/shop'><button className="px-7 py-3 bg-yellow-400 text-black rounded-md font-semibold hover:scale-105 transition">
+              <button 
+              onClick={()=>{
+                navigate('/shop')
+              }}
+              className="px-7 py-3 bg-yellow-400 text-black rounded-md font-semibold hover:scale-105 transition">
                 Shop Now
-              </button></Link>
+              </button>
 
               <button className="px-7 py-3 text-white font-semibold bg-licorice  rounded-md  hover:scale-105">
                 Explore
@@ -73,7 +78,7 @@ const reviews = [
 
         </div>
 
-        <div className="absolute md:static  ">
+        <div className="absolute md:static ">
           <img
             src="/Images/hero-banner.jpg"
             alt="shopping"
@@ -88,10 +93,10 @@ const reviews = [
           Shop by Category
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
 
           <div
-            className=" rounded-2xl w-full h-80 text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
+            className=" rounded-2xl w-full h-50 sm:h-80 text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <h1
               className="p-5  text-white font-bold text-xl absolute "
@@ -103,19 +108,19 @@ const reviews = [
           </div>
 
           <div
-            className=" rounded-2xl w-full h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
+            className=" rounded-2xl w-full h-50 sm:h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <h1
               className="p-5 text-white font-bold text-xl absolute "
             >Watches</h1>
             <img src="/Images/watches.jpg"
-              className=" rounded-2xl object-cover h-full "
+              className=" rounded-2xl object-cover w-full h-full "
               alt="" />
             <h3 className="absolute font-semibold text-lg">Watches</h3>
           </div>
 
           <div
-            className=" rounded-2xl h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
+            className=" rounded-2xl h-50 sm:h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <h1
               className="p-5  text-white font-bold text-xl absolute "
@@ -125,7 +130,7 @@ const reviews = [
               alt="" />
             <h3 className="absolute font-semibold text-lg">Electronics</h3>
           </div><div
-            className=" rounded-2xl h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
+            className=" rounded-2xl h-50 sm:h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <h1
               className="p-5 text-yellow-300  font-bold text-xl absolute "
@@ -137,7 +142,7 @@ const reviews = [
           </div>
 
           <div
-            className=" rounded-2xl h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
+            className=" rounded-2xl h-50 sm:h-80  text-center hover:shadow-xl  hover:scale-105 transition-all duration-500 cursor-pointer"
           >
             <h1
               className="p-5   font-bold text-xl absolute "
@@ -150,7 +155,7 @@ const reviews = [
 
         </div>
         
-        <div className="w-full mt-20 px-6 ">
+        <div className="w-full  mt-20 px-0 sm:px-6 absolute-hidden ">
 
           <div className="flex justify-end items-center mb-3  ml-5 gap-3">
             <div className="border border-black/30 p-1">
@@ -160,10 +165,10 @@ const reviews = [
             </div>
             
           </div>
-          <div className="flex items-center gap-25">
+          <div className="block sm:flex items-center gap-25">
             <div>
-              <h2 className="text-4xl  font-bold">Trending Collections</h2>
-              <p className="text-gray-500 text-md">
+              <h2 className="text-xl sm:text-4xl  font-bold">Trending Collections</h2>
+              <p className="hidden sm:flex text-gray-500 text-md">
                 Handmade & Vintage picks curated for you
               </p>
               <button className="text-md text-pink-600 font-semibold hover:underline">
@@ -225,35 +230,34 @@ const reviews = [
       
       <section className="w-full flex flex-col  bg-amber-200 h-150">
         
-      <div className="bg-cafe absolute ml-10  rounded-xl mt-10 py-3 px-6 text-white ">
-      <h2 className="text-3xl font-semibold mb-10 text-center">
+      <div className="bg-cafe absolute ml-5 sm:ml-10  rounded-xl mt-10 py-5 sm:py-3 px-6 text-white ">
+      <h2 className="text-3xl font-semibold mb-2 sm:mb-10 text-center">
         Customer Reviews
 
       </h2>
-      <div className="flex gap-6">
+      <div className="block sm:flex space-y-6 sm:space-x-2">
 
         {reviews.map((review, index) => (
           <div
             key={index}
-            whileHover={{ scale: 1.05 }}
-            className="w-110 bg-pink-50 text-gray-800 rounded-xl shadow-lg p-4"
+            className="w-110 bg-pink-50 hover:scale-103 transition:scale duration-500 text-gray-800 rounded-xl shadow-lg p-4"
           >
-           <div className="text-yellow-500 mb-2">
+           <div className="text-xs sm:text-lg text-yellow-500 mb-2">
               ⭐⭐⭐⭐⭐
             </div>
             <div className="flex gap-4">
               <img
                 src={review.img}
-                className="w-20 h-20 object-cover rounded-md"
+                className="h-10 sm:w-20 h-10 sm:h-20 object-cover rounded-md"
               />
               <div>
-                <h3 className="font-semibold">LOVE IT!</h3>
-                <p className="text-sm text-gray-600 mt-1">
+                <h3 className="text-xs sm:text-md font-semibold">LOVE IT!</h3>
+                <p className="text-xs sm:text-sm text-gray-600 mt-1">
                   {review.text}
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center mt-0 sm:mt-4">
               
               <p className="text-sm font-medium">{review.name}</p>
             </div>
@@ -262,7 +266,7 @@ const reviews = [
         ))}
       </div>
 
-      <div className="flex justify-center mt-6 gap-4">
+      <div className="hidden sm:flex justify-center mt-6 gap-4">
         <button className="bg-white text-black px-3 py-1 rounded shadow hover:scale-105 transition">
           ◀
         </button>

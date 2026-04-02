@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import api from "../../api/axios";
 
 const Register = () => {
-
+const navigate=useNavigate()
   const [formdata, setformdata] = useState({
     fullname: "",
     phoneNumber: "",
@@ -71,7 +71,7 @@ const Register = () => {
         password: "",
         confirm_password: ""
       })
-
+      navigate('/login')
     } catch (error) {
       setmsg(error.response?.data?.message || "An error Occurred")
     }

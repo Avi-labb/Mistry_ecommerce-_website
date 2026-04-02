@@ -141,18 +141,26 @@ export const RefreshToken = async (req, res) => {
                 message: "Reffresh token is expired"
             })
         }
-        const accessToken = user.generateAccessToken()
+         const newAccessToken = user.generateAccessToken();
+    const newRefreshToken = user.generateRefreshToken();
+
+    user.refreshToken = newRefreshToken;
+    await user.save()
         const option = {
             httpOnly: true,
             secure: false
         }
         res.status(200)
-            .cookie("accessToken", accessToken, option)
+            .cookie("accessToken", newAccessToken, option)
+            .cookie("refreshToken",newRefreshToken,option)
             .json({
                 message: "New Access genearted"
             })
     } catch (error) {
-        res.status(401).json({
+        res.status(401)
+        .clearCookie("accessToken")
+        .clearCookie("refreshToken")
+        .json({
             message: "not generated", error
         })
     }

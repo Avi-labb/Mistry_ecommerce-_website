@@ -36,6 +36,7 @@ useEffect(() => {
         
         try {if(isEdit){
             const response = await api.put(`/address/update/${id}`, form)
+            seterror(response.data.message)
         }else{
             const response = await api.post("/address/add", form)
             
@@ -49,10 +50,11 @@ useEffect(() => {
                 pin: "",
                 state: "",
             })
+            seterror(response.data.message)
         }
             setactive(false)
             loadaddress()
-            seterror(response.data.message)
+            
         } catch (error) {
                 
             seterror(error.response?.data?.message || "Failed to add");
@@ -61,10 +63,11 @@ useEffect(() => {
     }
 
     return (
-        <div className="absolute h-screen   bg-amber-50 right-0 overflow-hidden w-[440px]">
+        <div
+        
+        className="absolute h-screen  bg-amber-50 right-0 overflow-hidden w-[440px]">
             
             <form onSubmit={handlesubmit} className="max-w-xl mx-auto p-4 bg-white">
-                {error && <div className='absolute shadow mt-2 bg-white/30 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold right-2'>{error}</div>}
                 <div className="flex justify-between font-semibold p-2">
                     <h1>ADD DELIVERY ADDRESS</h1><X className="cursor-pointer" onClick={() => setactive(false)} />
                 </div>
@@ -172,9 +175,12 @@ useEffect(() => {
                         className="w-full border-b border-gray-300 focus:border-blue-500 outline-none py-2 text-sm"
                     />
                 </div>
+
                 <button
                     className="bg-pink-700 w-full p-2 cursor-pointer text-white text-center">{isEdit ? "Updated Address": "Save Address and Continue"}</button>
             </form>
+            
+                {error && <div className='absolute shadow mt-2 bg-white/30 animate-fade-in border p-2 rounded-sm w-fit text-red-500 uppercase font-semibold right-2'>{error}</div>}
         </div>
     );
 }

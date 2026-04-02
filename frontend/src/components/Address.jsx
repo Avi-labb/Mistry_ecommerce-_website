@@ -61,9 +61,10 @@ export default function AddressUI({ setmove,setaddressId }) {
 
 
   return (
-    <div className="w-full max-w-xl mx-auto  bg-white">
+    <div className="w-full max-w-xl mx-auto overflow-hidden  bg-white">
 
-      {active && (<div className="absolute bg-black/50 inset-0 z-50">
+      {active && (<div
+       className="absolute  bg-black/50 inset-0 z-50">
         <AddressForm
           loadaddress={loadaddress}
           setactive={setactive}
