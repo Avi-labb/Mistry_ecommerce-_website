@@ -43,6 +43,7 @@ const Login = () => {
       
         navigate('/')      
     } catch (error) {
+        console.log(error)
       seterror(error.response?.data?.message || "Login Failed!!!!")
     }
   }
