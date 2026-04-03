@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import api from '../api/axios'
-export const ViewOrder = () => {
+export default ViewOrder = () => {
      const [orders, setorders] = useState("")
     
     const loaddata=async()=>{

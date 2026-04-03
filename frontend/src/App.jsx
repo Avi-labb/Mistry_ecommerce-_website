@@ -1,23 +1,23 @@
-import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { Suspense, lazy } from "react";
 
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Login from "./pages/Login/Login";
-import Register from "./pages/Login/Register";
-import ForgotPassword from "./pages/Login/Forgetpassword";
-import ResetPassword from "./pages/Login/Resetpassword";
-import AdminLogin from "./pages/Login/AdminLogin";
-import AdminRegister from "./pages/Login/AdminRegister";
-import Shop from "./pages/Shop";
-import AdminCreateProduct from "./pages/CreateProduct";
-import MistryInfoPage from './pages/Info'
-import Productdetail from "./pages/Productdetail";
-import Cart from "./pages/cart";
-import AdminProfile from "./pages/Login/AdminProfile";
-import ChangePassword from "./pages/Login/Adminpasswordchange";
-import AdminDashboard from "./pages/AminStatus";
-import { ViewOrder } from "./components/ViewOrder";
+const Layout = lazy(() => import("./pages/Layout"));
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login/Login"));
+const Register = lazy(() => import("./pages/Login/Register"));
+const ForgotPassword = lazy(() => import("./pages/Login/Forgetpassword"));
+const ResetPassword = lazy(() => import("./pages/Login/Resetpassword"));
+const AdminLogin = lazy(() => import("./pages/Login/AdminLogin"));
+const AdminRegister = lazy(() => import("./pages/Login/AdminRegister"));
+const Shop = lazy(() => import("./pages/Shop"));
+const AdminCreateProduct = lazy(() => import("./pages/CreateProduct"));
+const MistryInfoPage = lazy(() => import("./pages/Info"));
+const Productdetail = lazy(() => import("./pages/Productdetail"));
+const Cart = lazy(() => import("./pages/cart"));
+const AdminProfile = lazy(() => import("./pages/Login/AdminProfile"));
+const ChangePassword = lazy(() => import("./pages/Login/Adminpasswordchange"));
+const AdminDashboard = lazy(() => import("./pages/AminStatus"));
+const ViewOrder = lazy(() => import("./components/ViewOrder"));
 
 const router = createBrowserRouter([
   {
@@ -48,5 +48,9 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<div className="felx justify-center items-center text-center mt-10">Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }
