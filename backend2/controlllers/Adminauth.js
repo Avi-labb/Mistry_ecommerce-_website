@@ -152,7 +152,8 @@ export const LoginAdmin = async (req, res) => {
         
         const option = {
             httpOnly: true,
-            secure: false
+            secure: true,
+            sameSite:"none"
         }
 
         res
@@ -195,7 +196,8 @@ export const AdminLogout = async (req, res) => {
 
         const options = {
             httpOnly: true,
-            secure: true
+            secure: true,
+            sameSite:"none"
         };
 
         res
