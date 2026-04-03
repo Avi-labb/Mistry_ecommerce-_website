@@ -16,7 +16,7 @@ dotenv.config()
 const app=express()
 
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://mistry-shop-xox.onrender.com",
   credentials: true
 }))
 
