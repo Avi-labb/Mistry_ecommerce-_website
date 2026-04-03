@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://mistry-shop-xox.onrender.com",
+  baseURL: "http://localhost:5000",
   withCredentials: true,
 });
 

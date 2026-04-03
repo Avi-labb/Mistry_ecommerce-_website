@@ -228,19 +228,25 @@ const reviews = [
         ))}
       </section>
       
-      <section className="w-full flex flex-col  bg-amber-200 h-150">
+      <section className="w-full flex flex-col items-center justify-center  h-150">
         
-      <div className="bg-cafe absolute  sm:ml-10  rounded-xl mt-10 py-5 sm:py-3 px-6 text-white ">
+        <div>
+          <img src="/Images/cta-bg.png" 
+          className="object-cover w-500 bg-amber-300   h-150 "
+          alt="" />
+        </div>
+      
+      <div className="bg-cafe absolute ml-5 sm:ml-10  rounded-xl mt-10 py-5 sm:py-3 px-6 text-white ">
       <h2 className="text-3xl font-semibold mb-2 sm:mb-10 text-center">
         Customer Reviews
 
       </h2>
-      <div className="block sm:flex space-y-6 sm:space-x-2">
+      <div className="block sm:flex  space-y-6 sm:space-x-2">
 
         {reviews.map((review, index) => (
           <div
             key={index}
-            className="w-110 bg-pink-50 hover:scale-103 transition:scale duration-500 text-gray-800 rounded-xl shadow-lg p-4"
+            className="w-90 sm:w-110 bg-pink-50 hover:scale-103 transition:scale duration-500 text-gray-800 rounded-xl shadow-lg p-4"
           >
            <div className="text-xs sm:text-lg text-yellow-500 mb-2">
               ⭐⭐⭐⭐⭐
@@ -276,13 +282,8 @@ const reviews = [
       </div>
 
     </div> 
-        <div>
-          <img src="/Images/cta-bg.png" 
-          className="object-cover w-full h-150 shrink-0"
-          alt="" />
-        </div>
    </section>
-      
+   
       <section className="bg-[#f5eadc] text-gray-800 px-6 py-10 mt-16">
       <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8 items-start">
         <div>

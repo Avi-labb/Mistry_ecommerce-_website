@@ -86,7 +86,7 @@ const AdminLogin = () => {
           </p>
 
           <div className="solid flex items-center gap-5 space-y-2 font-semibold">
-            <img className="w-20 h-20 bg-cover" src="/adminbgcontact.gif" alt="" />
+            <img className="w-20 h-20 bg-cover" loading="lazy" src="/adminbgcontact.gif" alt="" />
             <div className="flex flex-col">
             <p className="">
               +245 04 166 0355

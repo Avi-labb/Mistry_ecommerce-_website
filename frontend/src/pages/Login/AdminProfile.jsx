@@ -109,6 +109,7 @@ const AdminProfile = () => {
                     onClick={() => setPreview(false)}
                 >
                     <img
+                    loading="lazy"
                     src={admin.avatar}
                      className="w-68 h-68 rounded-full border-4 border-white cursor-pointer"
                         />
@@ -128,6 +129,7 @@ const AdminProfile = () => {
                         <div className="absolute -bottom-12 left-6">
                             <div className="relative ">
                                 <img
+                                loading="lazy"
                                     src={admin.avatar}
                                     onClick={() => setPreview(true)}
                                     className="w-28 h-28 rounded-full border-4 border-white cursor-pointer"
@@ -285,6 +287,7 @@ const AdminProfile = () => {
                     </h2>
 
                     <img
+                    loading="lazy"
                         src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
                         alt="dashboard animation"
                         className="w-64 rounded-lg"

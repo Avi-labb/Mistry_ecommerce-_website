@@ -181,6 +181,7 @@ const Cart = () => {
               >
                 <div className="flex items-center gap-4">
                   <img
+                  loading="lazy"
                     src={item.product.images}
                     className="w-20 h-20 object-cover rounded"
                   />

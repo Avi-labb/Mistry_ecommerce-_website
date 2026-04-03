@@ -244,6 +244,7 @@ const Shop = () => {
                 <div className="hover:scale-105 bg-white transition-all duration-200 shadow-xl rounded-md p-2 backdrop-blur-2xl">
 
                   <div className="overflow-hidden"><img
+                  loading="lazy"
                   className="rounded-md w-full h-70 object-cover hover:scale-120 transition-all duration-1000 "
                   src={ product.images }
                     alt={product.name} /></div>

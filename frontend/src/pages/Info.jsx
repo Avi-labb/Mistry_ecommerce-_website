@@ -30,10 +30,11 @@ export default function MistryInfoPage() {
       <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
 
         {images.map((img, index) => (
-          <div key={index}  className="absolute w-full h-full object-cover">
+          <div key={index} loading="lazy" className="absolute w-full h-full object-cover">
             <img
             key={index}
             src={img}
+            loading="lazy"
             className={`absolute w-full h-full object-cover transition-opacity duration-1000 ${
               index === current ? "opacity-100 " : "opacity-0" 
             }`}
@@ -66,6 +67,7 @@ export default function MistryInfoPage() {
 
         <img
           src="https://i.pinimg.com/originals/a5/6f/c9/a56fc90a5ed23e3047aa9cc902750b54.gif"
+          loading="lazy"
           className="rounded-3xl shadow-xl"
         />
 
@@ -158,16 +160,19 @@ export default function MistryInfoPage() {
 
           <img
             src="/Images/info8.jpg"
+            loading="lazy"
             className="rounded-2xl shadow-lg hover:scale-105 transition"
           />
 
           <img
             src="/Images/info14.jpg"
+            loading="lazy"
             className="rounded-2xl shadow-lg hover:scale-105 transition"
           />
 
           <img
             src="/Images/info1.jpeg"
+            loading="lazy"
             className="rounded-2xl shadow-lg hover:scale-105 transition"
           />
 

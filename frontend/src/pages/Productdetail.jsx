@@ -55,6 +55,7 @@ const Productdetail = () => {
           <img
              src={product.images}
             alt="its a"
+            loading="lazy"
             className="h-96 object-contain rounded-2xl hover:scale-120 transition-all duration-500"
           /></div>
         </div>

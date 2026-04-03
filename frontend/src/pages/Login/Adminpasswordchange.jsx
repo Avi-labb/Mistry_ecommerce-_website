@@ -32,7 +32,7 @@ const ChangePassword = () => {
         password:"",
         confirm_password:""
       })
-      
+      navigate('/admin/login')
     } catch (error) {
       setMsg(error.response?.data?.message || "UI Error")
     }
